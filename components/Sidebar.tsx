@@ -4,8 +4,10 @@ import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
+import { twMerge } from "tailwind-merge";
 
 import { Song } from "@/types";
+import usePlayer from "@/hooks/usePlayer";
 
 import Box from "./Box";
 import SidebarItem from "./SidebarItem";
@@ -19,6 +21,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ children, songs }) => {
   //Adding a hook over here.
   const pathname = usePathname();
+  const player = usePlayer();
   //In the below route first array was an empty array and the second array is the dependency array.
   const routes = useMemo(
     () => [
@@ -41,7 +44,15 @@ const Sidebar: React.FC<SidebarProps> = ({ children, songs }) => {
   );
 
   return (
-    <div className="flex h-full">
+    <div
+      className={twMerge(
+        `
+    flex
+    h-full
+    `,
+        player.activeId && "h-[calc(100%-80%)]"
+      )}
+    >
       <div
         className="
             hidden
