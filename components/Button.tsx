@@ -5,7 +5,7 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, children, disabled, type = "button", ...props }, ref) => {
+  ({ className, children, type = "button", ...props }, ref) => {
     return (
       <button
         type={type}
@@ -25,10 +25,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         hover:opacity-75
         transition
       `,
-          disabled && "opacity-75 cursor-not-allowed",
+          "opacity-75 cursor-not-allowed",
           className
         )}
-        disabled={disabled}
         ref={ref}
         {...props}
       >
