@@ -50,7 +50,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, songs }) => {
     flex
     h-full
     `,
-        player.activeId && "h-[calc(100%-80%)]"
+        player.activeId && "h-[calc(100%-10%)]"
       )}
     >
       <div
